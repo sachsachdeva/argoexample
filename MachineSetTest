@@ -102,7 +102,7 @@ metadata:
     hive.openshift.io/managed: 'true'
     machine.openshift.io/cluster-api-cluster: rhacm-managedaws-std-cc6gd
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       machine.openshift.io/cluster-api-cluster: rhacm-managedaws-std-cc6gd
