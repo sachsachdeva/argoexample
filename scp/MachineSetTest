@@ -5,6 +5,7 @@ metadata:
     machine.openshift.io/GPU: '0'
     machine.openshift.io/memoryMb: '16384'
     machine.openshift.io/vCPU: '4'
+    name: sachin
   resourceVersion: '33364'
   name: rhacm-managedaws-std-cc6gd-worker-ap-southeast-2a
   uid: 263adb5a-59d2-4a61-88ab-c784f252df1a
