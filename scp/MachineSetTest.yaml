@@ -2,14 +2,16 @@ apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
   annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"machine.openshift.io/v1beta1","kind":"MachineSet","metadata":{"annotations":{"machine.openshift.io/GPU":"0","machine.openshift.io/memoryMb":"16384","machine.openshift.io/vCPU":"4"},"creationTimestamp":"2021-12-09T08:11:52Z","generation":1,"labels":{"app.kubernetes.io/instance":"machinesetocp","hive.openshift.io/machine-pool":"worker","hive.openshift.io/managed":"true","machine.openshift.io/cluster-api-cluster":"rhacm-managedaws-std-cc6gd"},"managedFields":[{"apiVersion":"machine.openshift.io/v1beta1","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:labels":{".":{},"f:machine.openshift.io/cluster-api-cluster":{}}},"f:spec":{".":{},"f:replicas":{},"f:selector":{".":{},"f:matchLabels":{".":{},"f:machine.openshift.io/cluster-api-cluster":{},"f:machine.openshift.io/cluster-api-machineset":{}}},"f:template":{".":{},"f:metadata":{".":{},"f:labels":{".":{},"f:machine.openshift.io/cluster-api-cluster":{},"f:machine.openshift.io/cluster-api-machine-role":{},"f:machine.openshift.io/cluster-api-machine-type":{},"f:machine.openshift.io/cluster-api-machineset":{}}},"f:spec":{".":{},"f:metadata":{},"f:providerSpec":{".":{},"f:value":{".":{},"f:ami":{},"f:apiVersion":{},"f:blockDevices":{},"f:credentialsSecret":{},"f:deviceIndex":{},"f:iamInstanceProfile":{},"f:instanceType":{},"f:kind":{},"f:metadata":{},"f:placement":{},"f:securityGroups":{},"f:subnet":{},"f:tags":{},"f:userDataSecret":{}}}}}},"f:status":{}},"manager":"cluster-bootstrap","operation":"Update","time":"2021-12-09T08:11:52Z"},{"apiVersion":"machine.openshift.io/v1beta1","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{".":{},"f:machine.openshift.io/GPU":{},"f:machine.openshift.io/memoryMb":{},"f:machine.openshift.io/vCPU":{}}}},"manager":"machine-controller-manager","operation":"Update","time":"2021-12-09T08:22:40Z"},{"apiVersion":"machine.openshift.io/v1beta1","fieldsType":"FieldsV1","fieldsV1":{"f:status":{"f:availableReplicas":{},"f:fullyLabeledReplicas":{},"f:observedGeneration":{},"f:readyReplicas":{},"f:replicas":{}}},"manager":"machineset-controller","operation":"Update","time":"2021-12-09T08:28:16Z"},{"apiVersion":"machine.openshift.io/v1beta1","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:labels":{"f:hive.openshift.io/machine-pool":{},"f:hive.openshift.io/managed":{}}}},"manager":"manager","operation":"Update","time":"2021-12-09T08:48:59Z"}],"name":"rhacm-managedaws-std-cc6gd-worker-ap-southeast-2c","namespace":"openshift-machine-api","resourceVersion":"33370","uid":"9f4953d4-b67c-4a24-a20c-23c5f9b8770d"},"spec":{"replicas":1,"selector":{"matchLabels":{"machine.openshift.io/cluster-api-cluster":"rhacm-managedaws-std-cc6gd","machine.openshift.io/cluster-api-machineset":"rhacm-managedaws-std-cc6gd-worker-ap-southeast-2c"}},"template":{"metadata":{"labels":{"machine.openshift.io/cluster-api-cluster":"rhacm-managedaws-std-cc6gd","machine.openshift.io/cluster-api-machine-role":"worker","machine.openshift.io/cluster-api-machine-type":"worker","machine.openshift.io/cluster-api-machineset":"rhacm-managedaws-std-cc6gd-worker-ap-southeast-2c"}},"spec":{"metadata":{},"providerSpec":{"value":{"ami":{"id":"ami-0c1b7b6fd42c043c2"},"apiVersion":"awsproviderconfig.openshift.io/v1beta1","blockDevices":[{"ebs":{"encrypted":true,"iops":2000,"kmsKey":{"arn":""},"volumeSize":100,"volumeType":"io1"}}],"credentialsSecret":{"name":"aws-cloud-credentials"},"deviceIndex":0,"iamInstanceProfile":{"id":"rhacm-managedaws-std-cc6gd-worker-profile"},"instanceType":"m5.xlarge","kind":"AWSMachineProviderConfig","metadata":{"creationTimestamp":null},"placement":{"availabilityZone":"ap-southeast-2c","region":"ap-southeast-2"},"securityGroups":[{"filters":[{"name":"tag:Name","values":["rhacm-managedaws-std-cc6gd-worker-sg"]}]}],"subnet":{"filters":[{"name":"tag:Name","values":["rhacm-managedaws-std-cc6gd-private-ap-southeast-2c"]}]},"tags":[{"name":"kubernetes.io/cluster/rhacm-managedaws-std-cc6gd","value":"owned"}],"userDataSecret":{"name":"worker-user-data"}}}}}},"status":{"availableReplicas":1,"fullyLabeledReplicas":1,"observedGeneration":1,"readyReplicas":1,"replicas":1}}
     machine.openshift.io/GPU: '0'
     machine.openshift.io/memoryMb: '16384'
     machine.openshift.io/vCPU: '4'
-  resourceVersion: '33370'
+  resourceVersion: '120216'
   name: rhacm-managedaws-std-cc6gd-worker-ap-southeast-2c
   uid: 9f4953d4-b67c-4a24-a20c-23c5f9b8770d
   creationTimestamp: '2021-12-09T08:11:52Z'
-  generation: 1
+  generation: 2
   managedFields:
     - apiVersion: machine.openshift.io/v1beta1
       fieldsType: FieldsV1
@@ -44,7 +46,6 @@ metadata:
                 .: {}
                 'f:value':
                   'f:instanceType': {}
-                  'f:metadata': {}
                   'f:blockDevices': {}
                   'f:kind': {}
                   'f:securityGroups': {}
@@ -96,8 +97,26 @@ metadata:
       manager: manager
       operation: Update
       time: '2021-12-09T08:48:59Z'
+    - apiVersion: machine.openshift.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+          'f:labels':
+            'f:app.kubernetes.io/instance': {}
+        'f:spec':
+          'f:template':
+            'f:spec':
+              'f:providerSpec':
+                'f:value':
+                  'f:metadata': {}
+      manager: argocd-application-controller
+      operation: Update
+      time: '2021-12-09T11:43:02Z'
   namespace: openshift-machine-api
   labels:
+    app.kubernetes.io/instance: machinesetocp
     hive.openshift.io/machine-pool: worker
     hive.openshift.io/managed: 'true'
     machine.openshift.io/cluster-api-cluster: rhacm-managedaws-std-cc6gd
@@ -126,8 +145,7 @@ spec:
           credentialsSecret:
             name: aws-cloud-credentials
           instanceType: m5.xlarge
-          metadata:
-            creationTimestamp: null
+          metadata: {}
           blockDevices:
             - ebs:
                 encrypted: true
@@ -159,6 +177,6 @@ spec:
 status:
   availableReplicas: 1
   fullyLabeledReplicas: 1
-  observedGeneration: 1
+  observedGeneration: 2
   readyReplicas: 1
   replicas: 1
