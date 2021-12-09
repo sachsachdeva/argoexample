@@ -5,11 +5,10 @@ metadata:
     machine.openshift.io/GPU: '0'
     machine.openshift.io/memoryMb: '16384'
     machine.openshift.io/vCPU: '4'
-    name: sachin
-  resourceVersion: '33364'
-  name: rhacm-managedaws-std-cc6gd-worker-ap-southeast-2a
-  uid: 263adb5a-59d2-4a61-88ab-c784f252df1a
-  creationTimestamp: '2021-12-09T08:11:51Z'
+  resourceVersion: '33370'
+  name: rhacm-managedaws-std-cc6gd-worker-ap-southeast-2c
+  uid: 9f4953d4-b67c-4a24-a20c-23c5f9b8770d
+  creationTimestamp: '2021-12-09T08:11:52Z'
   generation: 1
   managedFields:
     - apiVersion: machine.openshift.io/v1beta1
@@ -62,7 +61,7 @@ metadata:
         'f:status': {}
       manager: cluster-bootstrap
       operation: Update
-      time: '2021-12-09T08:11:51Z'
+      time: '2021-12-09T08:11:52Z'
     - apiVersion: machine.openshift.io/v1beta1
       fieldsType: FieldsV1
       fieldsV1:
@@ -86,7 +85,7 @@ metadata:
           'f:replicas': {}
       manager: machineset-controller
       operation: Update
-      time: '2021-12-09T08:29:02Z'
+      time: '2021-12-09T08:28:16Z'
     - apiVersion: machine.openshift.io/v1beta1
       fieldsType: FieldsV1
       fieldsV1:
@@ -103,18 +102,18 @@ metadata:
     hive.openshift.io/managed: 'true'
     machine.openshift.io/cluster-api-cluster: rhacm-managedaws-std-cc6gd
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       machine.openshift.io/cluster-api-cluster: rhacm-managedaws-std-cc6gd
-      machine.openshift.io/cluster-api-machineset: rhacm-managedaws-std-cc6gd-worker-ap-southeast-2a
+      machine.openshift.io/cluster-api-machineset: rhacm-managedaws-std-cc6gd-worker-ap-southeast-2c
   template:
     metadata:
       labels:
         machine.openshift.io/cluster-api-cluster: rhacm-managedaws-std-cc6gd
         machine.openshift.io/cluster-api-machine-role: worker
         machine.openshift.io/cluster-api-machine-type: worker
-        machine.openshift.io/cluster-api-machineset: rhacm-managedaws-std-cc6gd-worker-ap-southeast-2a
+        machine.openshift.io/cluster-api-machineset: rhacm-managedaws-std-cc6gd-worker-ap-southeast-2c
     spec:
       metadata: {}
       providerSpec:
@@ -122,7 +121,7 @@ spec:
           userDataSecret:
             name: worker-user-data
           placement:
-            availabilityZone: ap-southeast-2a
+            availabilityZone: ap-southeast-2c
             region: ap-southeast-2
           credentialsSecret:
             name: aws-cloud-credentials
@@ -153,7 +152,7 @@ spec:
             filters:
               - name: 'tag:Name'
                 values:
-                  - rhacm-managedaws-std-cc6gd-private-ap-southeast-2a
+                  - rhacm-managedaws-std-cc6gd-private-ap-southeast-2c
           apiVersion: awsproviderconfig.openshift.io/v1beta1
           iamInstanceProfile:
             id: rhacm-managedaws-std-cc6gd-worker-profile
@@ -162,4 +161,4 @@ status:
   fullyLabeledReplicas: 1
   observedGeneration: 1
   readyReplicas: 1
-  replicas: 2
+  replicas: 1
