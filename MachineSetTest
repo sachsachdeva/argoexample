@@ -1,0 +1,164 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  annotations:
+    machine.openshift.io/GPU: '0'
+    machine.openshift.io/memoryMb: '16384'
+    machine.openshift.io/vCPU: '4'
+  resourceVersion: '33364'
+  name: rhacm-managedaws-std-cc6gd-worker-ap-southeast-2a
+  uid: 263adb5a-59d2-4a61-88ab-c784f252df1a
+  creationTimestamp: '2021-12-09T08:11:51Z'
+  generation: 1
+  managedFields:
+    - apiVersion: machine.openshift.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:machine.openshift.io/cluster-api-cluster': {}
+        'f:spec':
+          .: {}
+          'f:replicas': {}
+          'f:selector':
+            .: {}
+            'f:matchLabels':
+              .: {}
+              'f:machine.openshift.io/cluster-api-cluster': {}
+              'f:machine.openshift.io/cluster-api-machineset': {}
+          'f:template':
+            .: {}
+            'f:metadata':
+              .: {}
+              'f:labels':
+                .: {}
+                'f:machine.openshift.io/cluster-api-cluster': {}
+                'f:machine.openshift.io/cluster-api-machine-role': {}
+                'f:machine.openshift.io/cluster-api-machine-type': {}
+                'f:machine.openshift.io/cluster-api-machineset': {}
+            'f:spec':
+              .: {}
+              'f:metadata': {}
+              'f:providerSpec':
+                .: {}
+                'f:value':
+                  'f:instanceType': {}
+                  'f:metadata': {}
+                  'f:blockDevices': {}
+                  'f:kind': {}
+                  'f:securityGroups': {}
+                  'f:deviceIndex': {}
+                  'f:ami': {}
+                  'f:tags': {}
+                  .: {}
+                  'f:placement': {}
+                  'f:subnet': {}
+                  'f:apiVersion': {}
+                  'f:iamInstanceProfile': {}
+                  'f:credentialsSecret': {}
+                  'f:userDataSecret': {}
+        'f:status': {}
+      manager: cluster-bootstrap
+      operation: Update
+      time: '2021-12-09T08:11:51Z'
+    - apiVersion: machine.openshift.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:machine.openshift.io/GPU': {}
+            'f:machine.openshift.io/memoryMb': {}
+            'f:machine.openshift.io/vCPU': {}
+      manager: machine-controller-manager
+      operation: Update
+      time: '2021-12-09T08:22:40Z'
+    - apiVersion: machine.openshift.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:availableReplicas': {}
+          'f:fullyLabeledReplicas': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+      manager: machineset-controller
+      operation: Update
+      time: '2021-12-09T08:29:02Z'
+    - apiVersion: machine.openshift.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            'f:hive.openshift.io/machine-pool': {}
+            'f:hive.openshift.io/managed': {}
+      manager: manager
+      operation: Update
+      time: '2021-12-09T08:48:59Z'
+  namespace: openshift-machine-api
+  labels:
+    hive.openshift.io/machine-pool: worker
+    hive.openshift.io/managed: 'true'
+    machine.openshift.io/cluster-api-cluster: rhacm-managedaws-std-cc6gd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: rhacm-managedaws-std-cc6gd
+      machine.openshift.io/cluster-api-machineset: rhacm-managedaws-std-cc6gd-worker-ap-southeast-2a
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: rhacm-managedaws-std-cc6gd
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: rhacm-managedaws-std-cc6gd-worker-ap-southeast-2a
+    spec:
+      metadata: {}
+      providerSpec:
+        value:
+          userDataSecret:
+            name: worker-user-data
+          placement:
+            availabilityZone: ap-southeast-2a
+            region: ap-southeast-2
+          credentialsSecret:
+            name: aws-cloud-credentials
+          instanceType: m5.xlarge
+          metadata:
+            creationTimestamp: null
+          blockDevices:
+            - ebs:
+                encrypted: true
+                iops: 2000
+                kmsKey:
+                  arn: ''
+                volumeSize: 100
+                volumeType: io1
+          securityGroups:
+            - filters:
+                - name: 'tag:Name'
+                  values:
+                    - rhacm-managedaws-std-cc6gd-worker-sg
+          kind: AWSMachineProviderConfig
+          tags:
+            - name: kubernetes.io/cluster/rhacm-managedaws-std-cc6gd
+              value: owned
+          deviceIndex: 0
+          ami:
+            id: ami-0c1b7b6fd42c043c2
+          subnet:
+            filters:
+              - name: 'tag:Name'
+                values:
+                  - rhacm-managedaws-std-cc6gd-private-ap-southeast-2a
+          apiVersion: awsproviderconfig.openshift.io/v1beta1
+          iamInstanceProfile:
+            id: rhacm-managedaws-std-cc6gd-worker-profile
+status:
+  availableReplicas: 1
+  fullyLabeledReplicas: 1
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
